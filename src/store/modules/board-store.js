@@ -342,8 +342,7 @@ export const boardStore = {
                 context.commit({ type: 'setBoard', boardId: context.state.board._id })
                 const board = await boardService.save(context.state.board)
                 return newTasks
-            }
-            catch (prevBoard) {
+            } catch (prevBoard) {
                 // console.log('boardStore: Error in updateTasks')
                 context.commit({ type: 'updateBoard', board: prevBoard })
                 context.commit({ type: 'setBoard', boardId: prevBoard._id })
@@ -393,17 +392,17 @@ export const boardStore = {
                 return payload.task
             }
             catch (err) {
-                {
-                    console.log('boardStore: Error in updateLabels', err)
-                    // // context.commit({
-                    // //     type: 'updateTask', payload: {
-                    // //         task: prevTask,
-                    // //         groupId: payload.groupId
-                    // //     }
-                    // })
-                    context.commit(({ type: 'removeActivity' }))
-                    throw err
-                }
+
+                console.log('boardStore: Error in updateLabels', err)
+                // // context.commit({
+                // //     type: 'updateTask', payload: {
+                // //         task: prevTask,
+                // //         groupId: payload.groupId
+                // //     }
+                // })
+                context.commit(({ type: 'removeActivity' }))
+                throw err
+
             }
         },
 
@@ -449,8 +448,7 @@ export const boardStore = {
                 context.commit({ type: 'addActivity', activity })
                 const updatedBoard = await context.dispatch({ type: 'updateBoard', board: board })
                 return updatedBoard
-            }
-            catch (err) {
+            } catch (err) {
                 console.log(err);
                 board.groups.pop(group)
                 context.commit({ type: 'updateBoard', board })
@@ -469,8 +467,7 @@ export const boardStore = {
                 context.commit({ type: 'addActivity', activity })
                 const updatedBoard = await context.dispatch({ type: 'updateBoard', board: board })
                 return updatedBoard
-            }
-            catch (err) {
+            } catch (err) {
                 console.log(err);
                 board.groups.splice(groupIdx, 1, prevGroup)
                 context.commit({ type: 'updateBoard', board: board })
@@ -492,8 +489,7 @@ export const boardStore = {
             try {
                 context.commit({ type: 'addActivity', activity: payload.activity })
                 await boardService.save(newBoard)
-            }
-            catch (err) {
+            } catch (err) {
                 console.log(err);
                 context.commit({ type: 'updateBoard', board: prevBoard })
                 context.commit({ type: 'setBoard', boardId: prevBoard._id })
@@ -513,9 +509,7 @@ export const boardStore = {
                 context.commit({ type: 'addActivity', activity })
                 const updatedBoard = await context.dispatch({ type: 'updateBoard', board: board })
                 return updatedBoard
-            }
-
-            catch (err) {
+            } catch (err) {
                 console.log(err);
                 context.commit({ type: 'updateBoard', board: prevBoard })
                 context.commit({ type: 'setBoard', boardId: prevBoard._id })

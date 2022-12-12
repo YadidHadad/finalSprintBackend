@@ -51,8 +51,8 @@ async function saveGroup(boardId, group, activity) {
         board.groups.push(group)
         const newBoard = await save(board)
     }
-    catch {
-
+    catch (err) {
+        console.log(err)
     }
     // TODO: find the task, and update
     board.activities.unshift(activity)

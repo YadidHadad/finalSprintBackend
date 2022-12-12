@@ -1,2 +1,1 @@
-# Coding Academy
-## Vue Frontend Starter
+Coding Academy - production ready server 
