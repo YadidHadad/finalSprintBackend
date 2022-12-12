@@ -2,7 +2,7 @@ const logger = require('../../services/logger.service')
 const userService = require('../user/user.service')
 const authService = require('../auth/auth.service')
 // const socketService = require('../../services/socket.service')
-const activitieservice = require('./activity.service')
+// const activitieservice = require('./activity.service')
 
 async function getactivities(req, res) {
     try {
@@ -30,17 +30,17 @@ async function deleteActivity(req, res) {
 
 
 async function addActivity(req, res) {
-    
-    var {loggedinUser} = req
- 
+
+    var { loggedinUser } = req
+
     try {
         var activity = req.body
         activity.byUserId = loggedinUser._id
         activity = await activitieservice.add(activity)
-        
+
         // prepare the updated activity for sending out
         activity.aboutUser = await userService.getById(activity.aboutUserId)
-        
+
         // Give the user credit for adding a activity
         // var user = await userService.getById(activity.byUserId)
         // user.score += 10
@@ -58,7 +58,7 @@ async function addActivity(req, res) {
 
         // socketService.broadcast({type: 'activity-added', data: activity, userId: loggedinUser._id})
         // socketService.emitToUser({type: 'activity-about-you', data: activity, userId: activity.aboutUser._id})
-        
+
         const fullUser = await userService.getById(loggedinUser._id)
         // socketService.emitTo({type: 'user-updated', data: fullUser, label: fullUser._id})
 
