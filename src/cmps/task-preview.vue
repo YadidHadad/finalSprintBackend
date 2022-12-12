@@ -21,10 +21,11 @@
                     <!-- <input class="trellicons icon-clock" type="checkbox" 
                         v-model="isComplete" /> -->
                     <div class="btn-date flex" @click.stop="toggleIsComplete"
-                        :style="{ backgroundColor: getIsComplete ? '#61bd4f' : '', color: getIsComplete ? '#ffff' : ''}">
+                        :style="{ backgroundColor: getIsComplete ? '#61bd4f' : '', color: getIsComplete ? '#ffff' : '' }">
                         <span class="trellicons icon-clock"></span>
                         <span class="fa-regular square-icon"></span>
-                        <span class="date-str" :style="{ color: getIsComplete ? '#ffff' : '' }"> {{ getDueDateStr }}</span>
+                        <span class="date-str" :style="{ color: getIsComplete ? '#ffff' : '' }"> {{ getDueDateStr
+                        }}</span>
                         <span v-if="getDueDateStr < Date.now()" class="time-tag"
                             :style="{ backgroundColor: '#ec9488' }"></span>
 
@@ -32,8 +33,8 @@
                     <!-- <span class="date-str">{{ getDueDateStr }}</span> -->
                 </div>
                 <span v-if="task.description" class="trellicons desc-icon" title="This card has a description"></span>
-                <div class="attachments flex" v-if="task.attachments && task.attachments.length " title="Attachments">
-                    <span  class="trellicons attachment" ></span>
+                <div class="attachments flex" v-if="task.attachments && task.attachments.length" title="Attachments">
+                    <span class="trellicons attachment"></span>
                     <span>{{
                             task.attachments.length
                     }}</span>
@@ -228,7 +229,16 @@ export default {
         }
 
 
-    }
+    },
+    // watch: {
+    //     task: {
+    //         handler: function (val, oldVal) {
+    //             console.log('WATCH TASK')
+    //             this.task = this.group.tasks
+    //         },
+    //         deep: true
+    //     }
+    // }
 }
 
 </script>
