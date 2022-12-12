@@ -5,10 +5,10 @@ const config = require('../config')
 function requireAuth(req, res, next) {
   if (config.isGuestMode && !req?.cookies?.loginToken) {
     req.loggedinUser = {
-      fullname: 'Dima Demo', email: 'dima-demo@mystartup.org', isAdmin: false, imgUrl: 'src/assets/img/user1.jpg'
+      fullname: 'Dima Demo', email: 'dima-demo@mystartup.org', isAdmin: false, imgUrl: 'https://res.cloudinary.com/dnznyz6om/image/upload/v1670495585/htkfdnkkhbrxd3nddln7.webp'
     }
     //  {
-    //      fullname: 'Dima Demo', email: 'dima-demo@mystartup.org', isAdmin: false, imgUrl: 'src/assets/img/user1.jpg'
+    //      fullname: 'Dima Demo', email: 'dima-demo@mystartup.org', isAdmin: false, imgUrl: 'https://res.cloudinary.com/dnznyz6om/image/upload/v1670495585/htkfdnkkhbrxd3nddln7.webp'
     //   }
     return next()
   }

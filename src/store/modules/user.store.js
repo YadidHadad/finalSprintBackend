@@ -14,7 +14,7 @@ export const userStore = {
         users({ users }) { return users },
         loggedinUser({ loggedinUser }) {
             return loggedinUser
-            // || { _id: 'fsdfds', fullname: 'Guest guest', email: 'guest', password: '123', isAdmin: true, imgUrl: 'src/assets/img/user1.jpg' }
+            // || { _id: 'fsdfds', fullname: 'Guest guest', email: 'guest', password: '123', isAdmin: true, imgUrl: 'https://res.cloudinary.com/dnznyz6om/image/upload/v1670495585/htkfdnkkhbrxd3nddln7.webp' }
         },
         watchedUser({ watchedUser }) { return watchedUser }
     },
